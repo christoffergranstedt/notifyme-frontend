@@ -70,14 +70,14 @@ export const ProfilePage: React.FC<ProfilePageProps> = (props) => {
 	const authenticateGitlabAccount = async () => {
 		setCookie(CookieName.JWT, user.accessToken, { sameSite: 'lax', path: '/' })
 		setTimeout(() => {
-			window.location.replace('/api/accounts/gitlab/authenticate')
+			window.location.replace('/accounts/gitlab/authenticate')
 		}, 500)	
 	}
 
 	const authenticateSlackAccount = async () => {	
 		setCookie(CookieName.JWT, user.accessToken, { sameSite: 'lax', path: '/' })
 		setTimeout(() => {
-			window.location.replace('/api/accounts/slack/authenticate')
+			window.location.replace('/accounts/slack/authenticate')
 		}, 500)	
 	}
 

@@ -22,7 +22,7 @@ export const SignUpPage: React.FC<SignUpPageProps> = (props) => {
 	const onFormSubmit = async (userInput: UserInput) => {
 		try {
 			console.log('hej på dig')
-			await sendRequest({ url: '/api/accounts/register', method: HTTPMethod.POST, body: userInput, token: null })
+			await sendRequest({ url: '/accounts/register', method: HTTPMethod.POST, body: userInput, token: null })
 			history.push('/auth/signin')
 		} catch (error) {
 			console.log(error)

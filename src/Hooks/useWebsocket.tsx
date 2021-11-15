@@ -42,7 +42,7 @@ export const useWebsocket = () => {
 		if (!startedPingingServer) {
 			setStartedPingingServer(true)
 			setTimeout(async () => {
-				await sendRequest({ url: `/api/events/ping/`, method: HTTPMethod.GET, token: accessToken })
+				await sendRequest({ url: `/events/ping/`, method: HTTPMethod.GET, token: accessToken })
 			}, 1000 * 60)
 		}	
 	}, [sendRequest, accessToken, startedPingingServer])

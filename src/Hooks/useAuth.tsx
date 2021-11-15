@@ -59,7 +59,7 @@ export const useAuth = () => {
 
 	const signin = React.useCallback(async (userInput) => {
 		try {
-			const data : AuthenticateData = await sendRequest({ url: '/api/accounts/authenticate', method: HTTPMethod.POST, body: userInput, token: null })
+			const data : AuthenticateData = await sendRequest({ url: '/accounts/authenticate', method: HTTPMethod.POST, body: userInput, token: null })
 			const userPayload: UserPayload = { isSignedIn: true, ...data.user }
 			dispatch({ 
 				type: UserOption.SetUser, 
@@ -79,7 +79,7 @@ export const useAuth = () => {
 				type: UserOption.RemoveUser, 
 				payload: { } 
 			})
-			await sendRequest({ url: '/api/accounts/signout', method: HTTPMethod.GET, token: user.accessToken })
+			await sendRequest({ url: '/accounts/signout', method: HTTPMethod.GET, token: user.accessToken })
 
 
 		} catch (error) {
@@ -91,7 +91,7 @@ export const useAuth = () => {
 	const refreshAccessToken = React.useCallback(async () => {
 		try {
 			if (!user.refreshToken) return
-			const data : RefreshData = await sendRequest({ url: '/api/accounts/refresh', method: HTTPMethod.POST, token: user.refreshToken })
+			const data : RefreshData = await sendRequest({ url: '/accounts/refresh', method: HTTPMethod.POST, token: user.refreshToken })
 			dispatch({ 
 				type: UserOption.UpdateTokens, 
 				payload: data.user

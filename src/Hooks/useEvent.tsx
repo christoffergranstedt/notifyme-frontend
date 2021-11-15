@@ -30,7 +30,7 @@ export const useEvent = () => {
 	const fetchEvents = React.useCallback(async () => {
 		try {
 			if (hasAuthenticatedGitlab && selectedGroup) {
-				const data: GetAllEvents = await sendRequest({ url: `/api/events/groups/${selectedGroup.groupId}`, method: HTTPMethod.GET, token: accessToken })
+				const data: GetAllEvents = await sendRequest({ url: `/events/groups/${selectedGroup.groupId}`, method: HTTPMethod.GET, token: accessToken })
 				return data.events
 			}
 		} catch (error) {

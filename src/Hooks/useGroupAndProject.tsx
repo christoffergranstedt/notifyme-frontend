@@ -24,7 +24,7 @@ export const useGroupAndProject = () => {
 	const fetchGroups = React.useCallback(async () => {
 		try {
 			if (hasAuthenticatedGitlab) {
-				const data: GetAllGroups = await sendRequest({ url: '/api/groups', method: HTTPMethod.GET, token: accessToken })
+				const data: GetAllGroups = await sendRequest({ url: '/groups', method: HTTPMethod.GET, token: accessToken })
 				return data.groups
 			}
 		} catch (error) {
@@ -35,7 +35,7 @@ export const useGroupAndProject = () => {
 	const fetchProjectsInGroup = React.useCallback(async () => {
 		try {
 			if (hasAuthenticatedGitlab && selectedGroup) {
-				const data: GetAllGroupProjects = await sendRequest({ url: `/api/groups/${selectedGroup.groupId}/projects`, method: HTTPMethod.GET, token: accessToken })
+				const data: GetAllGroupProjects = await sendRequest({ url: `/groups/${selectedGroup.groupId}/projects`, method: HTTPMethod.GET, token: accessToken })
 				return data.projects
 			} 
 		} catch (error) {
@@ -70,7 +70,7 @@ export const useGroupAndProject = () => {
 	const updateProjectNotifications = React.useCallback(async (notificationSettings: { projectId: string, wantsIssueEvents?: boolean, wantsReleaseEvents?: boolean }) => {
 		try {
 			if (notificationSettings) dispatch({ type: GroupOption.UpdateProjectNotifications, payload: notificationSettings })
-			if (selectedGroup) await sendRequest({ url: `/api/groups/${selectedGroup.groupId}/projects/${notificationSettings.projectId}`, method: HTTPMethod.PUT, token: accessToken, body: notificationSettings })
+			if (selectedGroup) await sendRequest({ url: `/groups/${selectedGroup.groupId}/projects/${notificationSettings.projectId}`, method: HTTPMethod.PUT, token: accessToken, body: notificationSettings })
 		} catch (error) {
 			console.log(error)
 		}
