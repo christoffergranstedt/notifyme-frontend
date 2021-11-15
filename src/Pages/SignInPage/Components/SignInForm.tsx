@@ -31,7 +31,7 @@ const SignInForm = ({onFormSubmit, isLoading}: SignInFormProps) => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input label='Username' register={register} name='username'/>
 				<Input type='password' label='Password' register={register} name='password'/>
-				<ButtonSubmit>{isLoading ? <Loader type="ThreeDots" color="#cccccc" height={10} /> : 'Sign in' }</ButtonSubmit>
+				<ButtonSubmit>{isLoading ? <Loader type="ThreeDots" color="#cccccc" height={10} /> : 'sign in' }</ButtonSubmit>
 			</form>
 		</StyledDiv>
 	)
